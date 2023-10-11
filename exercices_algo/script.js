@@ -228,12 +228,12 @@
 
 
 // Déclaration du tableau
-let notes = new Array(9);
+// let notes = new Array(9);
 
 // Saisie des valeurs par l'utilisateur
-for (let i = 0; i < notes.length; i++) {
-  notes[i] = parseFloat(prompt(`Entrez la note ${i + 1}:`));
-}
+// for (let i = 0; i < notes.length; i++) {
+//   notes[i] = parseFloat(prompt(`Entrez la note ${i + 1}:`));
+// }
 
 // // Affichage du tableau
 // console.log(notes);
@@ -299,7 +299,33 @@ for (let i = 0; i < notes.length; i++) {
 // Fin de l'exercice
 
 
+// Demande à l'utilisateur de saisir une couleur en utilisant la fenêtre de saisie
+var userColor = prompt("Entrez une couleur (en anglais ou en code hexadécimal) :");
 
+// Demande à l'utilisateur de saisir une valeur d'opacité entre 0 et 1
+var userOpacity = parseFloat(prompt("Entrez une valeur d'opacité entre 0 et 1 :"));
+
+// Vérifie si la valeur d'opacité est valide
+if (isNaN(userOpacity) || userOpacity < 0 || userOpacity > 1) {
+  console.log("Valeur d'opacité invalide. Veuillez entrer une valeur entre 0 et 1.");
+} else {
+  // Affiche la couleur choisie avec l'opacité spécifiée
+  var rgbaColor = `rgba(${hexToRgb(userColor)}, ${userOpacity})`;
+  console.log("La couleur choisie avec l'opacité est : " + rgbaColor);
+}
+
+// Fonction pour convertir une couleur hexadécimale en RGB
+function hexToRgb(hex) {
+  // Supprime le # du début de la chaîne si présent
+  hex = hex.replace("#", "");
+  
+  // Sépare les composantes de couleur (rouge, vert, bleu)
+  var red = parseInt(hex.substring(0, 2), 16);
+  var green = parseInt(hex.substring(2, 4), 16);
+  var blue = parseInt(hex.substring(4, 6), 16);
+  
+  return `${red}, ${green}, ${blue}`;
+}
 
 
 

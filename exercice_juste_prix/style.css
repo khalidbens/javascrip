@@ -1,0 +1,94 @@
+*, ::before , ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #c6b4b4;
+    font-family: 'Arial', sans-serif;
+    
+}
+
+
+
+#game-container {
+    text-align: center;
+    background-color: #8b858576;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.634);
+    transition: transform 0.5s ease-in-out; 
+    
+}
+ 
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-shadow:#0809085c -2px 3px 3px;
+}
+
+p {
+    color: #555;
+    
+    
+}
+
+#inputGuess {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#guessBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 10px;
+    color: #333;
+}
+
+#restartBtn {
+    display: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#restartBtn:hover {
+    background-color: #2980b9;
+}
+
+
+#game-container.hidden {
+    transform: rotateY(360deg);
+}
+
+#result.hidden {
+    transform: rotateY(360deg);
+}
+
+
+#game-container, #result {
+    transition: transform 2s ease-in-out;
+}
