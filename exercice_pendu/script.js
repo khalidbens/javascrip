@@ -31,7 +31,7 @@ const mots = [
 let motSelectionne = mots[Math.floor(Math.random() * mots.length)];
 
 
-const bonnesLettresArr = [''];
+const bonnesLettresArr = [];
 const mauvaisesLettresArr = [];
 
 // afficher le mot cacher
@@ -62,6 +62,45 @@ function afficherMot() {
     }
 
 }
+// mauvaise lettres 
+function updateMauvaisesLettresE1() {
+    // afficher les mauvaises lettres
+    mauvaiseLettres.innerHTML = `
+        ${mauvaisesLettresArr.map(lettre => `<span>${lettre}</span>`)}
+    `
+
+
+
+    // afficher le bonhomme
+
+    figurePartie.forEach((partie, index) => {
+        const erreurs = mauvaisesLettresArr.length;
+        if (index < erreurs) {
+            partie.style.display = "block";
+        }
+        else {
+            partie.style.display = "none";
+        }
+    })
+
+    // verifier si on a perdu
+    if(mauvaisesLettresArr.length === figurePartie.length) {
+        messageFinal.innerText = "Malheureusement tu as perdu ! =(";
+        popup.style.display = "flex";
+    }
+    
+}
+
+
+
+
+// afficher notification
+function afficherNotification(){
+    notification.classList.add('afficher');
+    setTimeout(() => {
+        notification.classList.remove('afficher');
+    }, 2000);
+}
 
 // event listener pour rejouer
 window.addEventListener('keydown', e=> {
@@ -77,7 +116,7 @@ window.addEventListener('keydown', e=> {
                 afficherMot();
             }
             else {
-                // afficherNotification()
+                afficherNotification()
             }
             
         }
@@ -85,17 +124,28 @@ window.addEventListener('keydown', e=> {
             if(!mauvaisesLettresArr.includes(lettre)) {
                 mauvaisesLettresArr.push(lettre);
                 
-                // updateMauvaisesLettres();
+                updateMauvaisesLettresE1();
             }
             else {
-                // afficherNotification()
+                afficherNotification()
             }
         }
     }
 });
 
 
+// rejouer et redémarrer le jeux
 
+rejouerBtn.addEventListener('click', () => {
+    // vider les arrays
+    bonnesLettresArr.splice(0);
+    mauvaisesLettresArr.splice(0);
+
+    motSelectionne = mots[Math.floor(Math.random() * mots.length)];
+    afficherMot();
+    updateMauvaisesLettresE1();
+    popup.style.display = "none";
+})
 
 
 

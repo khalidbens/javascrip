@@ -134,3 +134,15 @@ h1{
     transform: translateY(-80px);
 }
 
+@media (max-width: 768px) {
+    
+    body {
+        font-size: 16px; 
+    }
+    .jeu-contenant {
+        width: 90%; 
+    }
+
+}
+
+
